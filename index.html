@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KMTC MedTech Exploration Platform</title>
+  <style>
+:root {
+  --ink: #061426;
+  --navy: #071d3a;
+  --blue: #1457d9;
+  --blue-2: #0b78d0;
+  --teal: #17b8a6;
+  --mint: #e9fbf7;
+  --sky: #eaf4ff;
+  --surface: #ffffff;
+  --paper: #f5f8fc;
+  --line: #dbe6f0;
+  --muted: #617084;
+  --soft-text: #32445a;
+  --warning: #fff6df;
+  --success: #e7fbf2;
+  --shadow: 0 20px 70px rgba(7, 29, 58, 0.10);
+  --shadow-soft: 0 12px 32px rgba(7, 29, 58, 0.07);
+  --radius: 24px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.topline {
+  background: var(--navy);
+  color: rgba(255,255,255,0.78);
+  font-size: 13px;
+}
+
+.topline-inner {
+  max-width: 1220px;
+  margin: auto;
+  padding: 9px 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+header {
+  background: rgba(255,255,255,0.92);
+  border-bottom: 1px solid rgba(219,230,240,0.85);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(16px);
+}
+
+.nav {
+  max-width: 1220px;
+  margin: auto;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: max-content;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(23,184,166,0.88), rgba(20,87,217,0.94)),
+    radial-gradient(circle at 20% 20%, #fff, transparent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 24px rgba(20,87,217,0.22);
+}
+
+.brand-text strong {
+  display: block;
+  color: var(--navy);
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+.brand-text span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: var(--soft-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-links a:hover { color: var(--blue); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 43px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid transparent;
+  font-weight: 750;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: #0f48ba;
+  box-shadow: 0 10px 26px rgba(20,87,217,0.22);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--navy);
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+.btn.secondary:hover {
+  background: var(--sky);
+  color: var(--blue);
+}
+
+.btn.teal {
+  background: var(--teal);
+  color: #05231f;
+}
+
+.btn.teal:hover { background: #13a898; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 4%, rgba(23,184,166,0.22), transparent 28%),
+    radial-gradient(circle at 12% 12%, rgba(20,87,217,0.16), transparent 24%),
+    linear-gradient(135deg, #ffffff 0%, #f5f9ff 48%, #eef8ff 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(20,87,217,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,87,217,0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 82%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1220px;
+  margin: auto;
+  padding: 82px 22px 64px;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 46px;
+  align-items: center;
+  position: relative;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 6px rgba(23,184,166,0.13);
+}
+
+h1 {
+  font-size: clamp(40px, 5.8vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -2.8px;
+  color: var(--navy);
+  max-width: 830px;
+  margin-bottom: 22px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 720px;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.trust-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.trust-pill {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.75);
+  color: var(--soft-text);
+  font-weight: 700;
+}
+
+.ecosystem-map {
+  min-height: 520px;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(219,230,240,0.95);
+  border-radius: 34px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.map-header h3 {
+  font-size: 17px;
+  color: var(--navy);
+}
+
+.map-header span {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--blue);
+  background: var(--sky);
+  border-radius: 999px;
+  padding: 7px 10px;
+}
+
+.node-system {
+  position: relative;
+  height: 415px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at center, rgba(20,87,217,0.09), transparent 40%),
+    linear-gradient(145deg, #fbfdff, #f1f7ff);
+  border: 1px solid #e8f0f8;
+}
+
+.core-node {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 38px;
+  background: linear-gradient(135deg, var(--navy), #123d70);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 22px 50px rgba(7,29,58,0.28);
+  z-index: 2;
+}
+
+.core-node strong {
+  display: block;
+  font-size: 22px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.core-node small {
+  color: rgba(255,255,255,0.72);
+}
+
+.orbit-node {
+  position: absolute;
+  width: 132px;
+  min-height: 88px;
+  padding: 14px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  color: var(--soft-text);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.orbit-node span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  margin-top: 4px;
+}
+
+.n1 { top: 28px; left: 42%; }
+.n2 { top: 92px; right: 24px; }
+.n3 { bottom: 54px; right: 54px; }
+.n4 { bottom: 28px; left: 34%; }
+.n5 { bottom: 92px; left: 24px; }
+.n6 { top: 92px; left: 42px; }
+
+section {
+  max-width: 1220px;
+  margin: auto;
+  padding: 68px 22px;
+}
+
+.section-title {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.section-title h2 {
+  color: var(--navy);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -1.6px;
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.search-console {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr auto;
+  gap: 12px;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px;
+  color: var(--ink);
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+textarea { min-height: 110px; resize: vertical; }
+
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(20,87,217,0.72);
+  box-shadow: 0 0 0 4px rgba(20,87,217,0.10);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card.lift:hover {
+  transform: translateY(-3px);
+  transition: .18s ease;
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-size: 19px;
+  letter-spacing: -0.3px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 17px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--sky), #fff);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tag {
+  padding: 7px 10px;
+  background: var(--sky);
+  color: #17467d;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tag.teal {
+  background: var(--mint);
+  color: #087568;
+}
+
+.tag.grey {
+  background: #f0f4f8;
+  color: #516173;
+}
+
+.tag.warning {
+  background: var(--warning);
+  color: #8b5a00;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.profile-card .btn {
+  margin-top: 20px;
+  align-self: flex-start;
+}
+
+.empty {
+  display: none;
+  margin-top: 18px;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px dashed var(--line);
+  background: #fff;
+  color: var(--muted);
+  text-align: center;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.module {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 20px;
+  min-height: 180px;
+}
+
+.module-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--sky), var(--mint));
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.module h3 { color: var(--navy); font-size: 17px; margin-bottom: 8px; }
+.module p { color: var(--muted); font-size: 13px; }
+
+.pathway {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.step {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 18px;
+  min-height: 165px;
+  position: relative;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  top: 48px;
+  width: 12px;
+  height: 2px;
+  background: var(--line);
+}
+
+.step:last-child::after { display: none; }
+
+.step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 850;
+  margin-bottom: 14px;
+}
+
+.step h3 { font-size: 16px; color: var(--navy); margin-bottom: 8px; }
+.step p { font-size: 12px; color: var(--muted); }
+
+.split {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.panel.dark {
+  background:
+    radial-gradient(circle at top right, rgba(23,184,166,0.24), transparent 34%),
+    linear-gradient(135deg, var(--navy), #0b315e);
+  color: #fff;
+  border: none;
+}
+
+.panel.dark p { color: rgba(255,255,255,0.76); }
+
+.checks {
+  display: grid;
+  gap: 12px;
+}
+
+.check {
+  display: flex;
+  gap: 11px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--soft-text);
+  font-size: 14px;
+}
+
+.check strong { color: var(--navy); }
+
+.dot {
+  width: 9px;
+  height: 9px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 5px rgba(23,184,166,0.12);
+  flex: 0 0 auto;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.stat {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat span {
+  color: rgba(255,255,255,0.72);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cta-band {
+  background:
+    radial-gradient(circle at 8% 15%, rgba(23,184,166,0.28), transparent 28%),
+    linear-gradient(135deg, var(--navy), #0c4b86);
+  color: #fff;
+  border-radius: 34px;
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cta-band h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.06;
+  margin-bottom: 12px;
+  letter-spacing: -1.4px;
+}
+
+.cta-band p {
+  color: rgba(255,255,255,0.78);
+  max-width: 760px;
+}
+
+.breadcrumb {
+  max-width: 1220px;
+  margin: auto;
+  padding: 28px 22px 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.breadcrumb a { color: var(--blue); }
+
+.profile-hero {
+  max-width: 1220px;
+  margin: 24px auto 0;
+  padding: 0 22px;
+}
+
+.profile-banner {
+  background:
+    radial-gradient(circle at 85% 12%, rgba(23,184,166,0.22), transparent 28%),
+    linear-gradient(135deg, #fff, #eef6ff);
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  padding: 34px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 22px;
+  align-items: center;
+}
+
+.profile-head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.big-logo {
+  width: 86px;
+  height: 86px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 22px;
+  box-shadow: 0 18px 34px rgba(20,87,217,0.22);
+  flex: 0 0 auto;
+}
+
+.profile-head h1 {
+  font-size: clamp(34px, 5vw, 58px);
+  margin: 0 0 8px;
+}
+
+.profile-head p {
+  color: var(--muted);
+  max-width: 780px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 22px;
+}
+
+.side-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.side-card h3, .content-card h3 {
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.fact-list {
+  display: grid;
+  gap: 14px;
+}
+
+.fact {
+  padding-bottom: 13px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.fact:last-child { border-bottom: none; padding-bottom: 0; }
+
+.fact span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 3px;
+}
+
+.fact strong {
+  color: var(--soft-text);
+  font-size: 14px;
+}
+
+.content-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.content-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: var(--shadow-soft);
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.service-item {
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fbfdff;
+}
+
+.service-item strong { color: var(--navy); display: block; margin-bottom: 4px; }
+.service-item span { color: var(--muted); font-size: 13px; }
+
+.timeline {
+  display: grid;
+  gap: 12px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #fbfdff;
+  border: 1px solid var(--line);
+}
+
+.timeline-item strong { color: var(--blue); }
+.timeline-item span { color: var(--muted); font-size: 14px; }
+
+.form-grid {
+  display: grid;
+  gap: 12px;
+}
+
+footer {
+  background: var(--navy);
+  margin-top: 40px;
+  color: rgba(255,255,255,0.74);
+}
+
+.footer-inner {
+  max-width: 1220px;
+  margin: auto;
+  padding: 34px 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.footer-inner strong { color: #fff; }
+
+@media (max-width: 1040px) {
+  .hero-inner, .section-title, .split, .info-grid, .profile-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .search-grid, .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .module-grid, .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pathway {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .profile-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 740px) {
+  .topline { display: none; }
+  .nav-links { display: none; }
+
+  .hero-inner { padding: 54px 18px 44px; }
+  section { padding: 48px 18px; }
+  .breadcrumb, .profile-hero { padding-left: 18px; padding-right: 18px; }
+
+  h1 { letter-spacing: -1.8px; }
+  .lead { font-size: 16px; }
+
+  .search-grid, .card-grid, .module-grid, .pathway, .stats, .service-list, .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .ecosystem-map { min-height: auto; }
+  .node-system {
+    height: auto;
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .core-node, .orbit-node {
+    position: static;
+    transform: none;
+    width: auto;
+    height: auto;
+    min-height: 0;
+  }
+
+  .core-node { border-radius: 24px; }
+
+  .step::after { display: none; }
+
+  .cta-band {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .profile-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="topline">
+    <div class="topline-inner">
+      <span>KMTC ecosystem concept platform · Kerala medical device discovery layer</span>
+      <span>Neutral registry · Verified profiles · Direct stakeholder connection</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="logo">KMTC</span>
+        <span class="brand-text">
+          <strong>MedTech Exploration Platform</strong>
+          <span>From clinical need to market access</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#explore">Explore</a>
+        <a href="#modules">Platform</a>
+        <a href="#pathway">Pathway</a>
+        <a href="#products">Products</a>
+        <a href="#governance">Governance</a>
+      </div>
+      <a class="btn" href="#register">Register Interest</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker"><span class="pulse"></span> Kerala Medical Technology Ecosystem Registry</div>
+          <h1>One trusted discovery layer for medical device development.</h1>
+          <p class="lead">
+            Discover manufacturers, clinical partners, regulatory experts, ISO 13485 consultants, testing labs,
+            distributors, academia, startups and service providers across the full MedTech development lifecycle.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#explore">Explore Ecosystem</a>
+            <a class="btn secondary" href="provider-kabani-tech.html">View Sample Provider Page</a>
+          </div>
+          <div class="trust-row">
+            <span class="trust-pill">No brokerage model</span>
+            <span class="trust-pill">KMTC-reviewed profiles</span>
+            <span class="trust-pill">Product + service showcase</span>
+          </div>
+        </div>
+
+        <aside class="ecosystem-map" aria-label="Ecosystem map illustration">
+          <div class="map-header">
+            <h3>Medical Device Ecosystem Map</h3>
+            <span>Concept UI</span>
+          </div>
+          <div class="node-system">
+            <div class="core-node">
+              <div>
+                <strong>KMTC</strong>
+                <small>Discovery & ecosystem intelligence</small>
+              </div>
+            </div>
+            <div class="orbit-node n1">Clinicians <span>Need validation</span></div>
+            <div class="orbit-node n2">Service Providers <span>Design, engineering, regulatory</span></div>
+            <div class="orbit-node n3">Manufacturers <span>Production and scale-up</span></div>
+            <div class="orbit-node n4">Distributors <span>Market access</span></div>
+            <div class="orbit-node n5">Testing Labs <span>Verification and validation</span></div>
+            <div class="orbit-node n6">Academia <span>Research and translation</span></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <section id="explore">
+      <div class="section-title">
+        <h2>Explore service providers, manufacturers and products.</h2>
+        <p>
+          The first version can work as a structured searchable registry. Users can filter by stakeholder type,
+          location, capability, verification level and development-stage relevance.
+        </p>
+      </div>
+
+      <div class="search-console">
+        <div class="search-grid">
+          <input id="searchInput" type="search" placeholder="Search: ISO 13485, CDSCO, electronics, manufacturer, distributor..." />
+          <select id="typeFilter">
+            <option value="">All stakeholder types</option>
+            <option value="Service Provider">Service Provider</option>
+            <option value="Manufacturer">Manufacturer</option>
+            <option value="Clinical Partner">Clinical Partner</option>
+            <option value="Testing Partner">Testing Partner</option>
+            <option value="Distributor">Distributor</option>
+            <option value="Academia">Academia</option>
+          </select>
+          <select id="stageFilter">
+            <option value="">All lifecycle stages</option>
+            <option value="Concept">Concept</option>
+            <option value="Prototype">Prototype</option>
+            <option value="Validation">Validation</option>
+            <option value="Regulatory">Regulatory</option>
+            <option value="Manufacturing">Manufacturing</option>
+            <option value="Market">Market Access</option>
+          </select>
+          <button class="btn" onclick="filterProfiles()">Search</button>
+        </div>
+      </div>
+
+      <div class="card-grid" id="profileGrid">
+        <article class="card lift profile-card" data-type="Service Provider" data-stage="Concept Prototype Validation Regulatory" data-keywords="kabani tech product design electronics firmware embedded prototype iso 13485 cdsco regulatory medical device">
+          <div class="avatar">KT</div>
+          <h3>Kabani Tech Pvt Ltd</h3>
+          <div class="meta">Service Provider · Kerala · Product development</div>
+          <p>Medical device product design, electronics, embedded systems, prototyping, engineering documentation and development pathway support.</p>
+          <div class="tag-row">
+            <span class="tag teal">KMTC Reviewed</span>
+            <span class="tag">Prototype</span>
+            <span class="tag">Engineering</span>
+          </div>
+          <a class="btn secondary" href="provider-kabani-tech.html">View Profile</a>
+        </article>
+
+        <article class="card lift profile-card" data-type="Manufacturer" data-stage="Manufacturing Market" data-keywords="contract manufacturing assembly cleanroom medical devices packaging production">
+          <div class="avatar">MF</div>
+          <h3>Medical Device Contract Manufacturer</h3>
+          <div class="meta">Manufacturer · Kochi · Contract production</div>
+          <p>Assembly, packaging and production support for selected medical device categories with contract manufacturing capability.</p>
+          <div class="tag-row">
+            <span class="tag warning">Self-declared</span>
+            <span class="tag">Manufacturing</span>
+            <span class="tag">Assembly</span>
+          </div>
+          <a class="btn secondary" href="#register">Request Details</a>
+        </article>
+
+        <article class="card lift profile-card" data-type="Clinical Partner" data-stage="Concept Validation" data-keywords="hospital clinician clinical validation usability feedback evaluation study">
+          <div class="avatar">CL</div>
+          <h3>Clinical Validation Partner</h3>
+          <div class="meta">Clinical Partner · Kozhikode · Usability</div>
+          <p>Clinical need validation, usability review, workflow feedback and early-stage evaluation support for medical device teams.</p>
+          <div class="tag-row">
+            <span class="tag teal">Verified Capability</span>
+            <span class="tag">Clinical</span>
+            <span class="tag">Validation</span>
+          </div>
+          <a class="btn secondary" href="#register">Request Details</a>
+        </article>
+
+        <article class="card lift profile-card" data-type="Service Provider" data-stage="Regulatory Validation" data-keywords="cdsco regulatory iso 13485 technical file risk management license documentation">
+          <div class="avatar">RQ</div>
+          <h3>Regulatory & Quality Consultant</h3>
+          <div class="meta">Service Provider · Thiruvananthapuram · CDSCO</div>
+          <p>Support for device classification, CDSCO pathway, ISO 13485 implementation, risk management and technical file preparation.</p>
+          <div class="tag-row">
+            <span class="tag">CDSCO</span>
+            <span class="tag">ISO 13485</span>
+            <span class="tag">Risk</span>
+          </div>
+          <a class="btn secondary" href="#register">Request Details</a>
+        </article>
+
+        <article class="card lift profile-card" data-type="Testing Partner" data-stage="Validation Regulatory" data-keywords="emc electrical safety testing calibration material performance biocompatibility laboratory">
+          <div class="avatar">TL</div>
+          <h3>Testing & Validation Lab</h3>
+          <div class="meta">Testing Partner · Kerala · Verification</div>
+          <p>Electrical safety, EMC pre-compliance, performance testing, material testing and calibration support for device teams.</p>
+          <div class="tag-row">
+            <span class="tag teal">Document Submitted</span>
+            <span class="tag">EMC</span>
+            <span class="tag">Testing</span>
+          </div>
+          <a class="btn secondary" href="#register">Request Details</a>
+        </article>
+
+        <article class="card lift profile-card" data-type="Distributor" data-stage="Market" data-keywords="hospital equipment distributor sales channel market access south india">
+          <div class="avatar">DS</div>
+          <h3>Hospital Equipment Distributor</h3>
+          <div class="meta">Distributor · South India · Market access</div>
+          <p>Regional distribution and market access support for validated medical device products and hospital equipment.</p>
+          <div class="tag-row">
+            <span class="tag warning">Self-declared</span>
+            <span class="tag">Distribution</span>
+            <span class="tag">Sales</span>
+          </div>
+          <a class="btn secondary" href="#register">Request Details</a>
+        </article>
+      </div>
+
+      <div class="empty" id="emptyState">No matching profiles found. Try a broader search term or change filters.</div>
+    </section>
+
+    <section id="modules">
+      <div class="section-title">
+        <h2>Platform modules for the first deployable version.</h2>
+        <p>
+          The MVP can remain minimal but useful: directory, product showcase, member profile, admin review,
+          opportunity posting and a knowledge section.
+        </p>
+      </div>
+
+      <div class="module-grid">
+        <div class="module">
+          <div class="module-icon">01</div>
+          <h3>Ecosystem Directory</h3>
+          <p>Searchable registry of medical device stakeholders with categories, location and capability filters.</p>
+        </div>
+        <div class="module">
+          <div class="module-icon">02</div>
+          <h3>Provider Profiles</h3>
+          <p>Detailed pages for service providers, manufacturers, labs, hospitals, academia and distributors.</p>
+        </div>
+        <div class="module">
+          <div class="module-icon">03</div>
+          <h3>Product Showcase</h3>
+          <p>Clear listing of concept, prototype, validation-stage, commercial and distributor-ready products.</p>
+        </div>
+        <div class="module">
+          <div class="module-icon">04</div>
+          <h3>Admin Review</h3>
+          <p>KMTC moderation, verification badge levels, profile approval and content governance workflow.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pathway">
+      <div class="section-title">
+        <h2>Guided medical device lifecycle.</h2>
+        <p>
+          The portal can help first-time innovators understand what support is required at each stage and who can help.
+        </p>
+      </div>
+
+      <div class="pathway">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Clinical Need</h3>
+          <p>Problem definition, clinician input, workflow and unmet need mapping.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Concept</h3>
+          <p>Intended use, risk hypothesis, feasibility and early architecture.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Prototype</h3>
+          <p>Electronics, mechanical design, firmware, software and enclosure development.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Validation</h3>
+          <p>Testing, usability, performance checks and clinical feedback loops.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <h3>Regulatory</h3>
+          <p>CDSCO pathway, ISO 13485, risk management and technical documentation.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <h3>Market</h3>
+          <p>Manufacturing, distributors, launch readiness and post-market feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="section-title">
+        <h2>Product showcase with transparent readiness status.</h2>
+        <p>
+          Product listings should clearly show whether a device is concept-stage, prototype-stage, validation-stage,
+          regulatory-stage, commercially available or distributor-ready.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card lift">
+          <div class="avatar">DX</div>
+          <h3>Digital Diagnostic Device</h3>
+          <div class="meta">Prototype stage · Seeking clinical validation</div>
+          <p>Sample diagnostic product listing with intended use, development stage, brochure and enquiry pathway.</p>
+          <div class="tag-row">
+            <span class="tag">Prototype</span>
+            <span class="tag">Clinical feedback required</span>
+          </div>
+        </article>
+
+        <article class="card lift">
+          <div class="avatar">OR</div>
+          <h3>Surgical Support Tool</h3>
+          <div class="meta">Validation stage · Manufacturing pathway required</div>
+          <p>Sample surgical device product requiring design verification, documentation and manufacturing partner discovery.</p>
+          <div class="tag-row">
+            <span class="tag">Validation</span>
+            <span class="tag">Testing required</span>
+          </div>
+        </article>
+
+        <article class="card lift">
+          <div class="avatar">HM</div>
+          <h3>Hospital Monitoring Accessory</h3>
+          <div class="meta">Commercial-ready · Distributor required</div>
+          <p>Sample commercial product listing for distributor discovery and hospital channel partnership.</p>
+          <div class="tag-row">
+            <span class="tag teal">Commercial-ready</span>
+            <span class="tag">Market access</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="governance">
+      <div class="split">
+        <div class="panel dark">
+          <h2>KMTC remains a neutral ecosystem enabler.</h2>
+          <p>
+            The portal helps stakeholders discover each other. KMTC need not become a broker, seller or commercial intermediary.
+            Deals, due diligence and commercial discussions remain between the listed parties.
+          </p>
+          <div class="stats">
+            <div class="stat"><strong>12+</strong><span>Stakeholder categories</span></div>
+            <div class="stat"><strong>4</strong><span>Verification levels</span></div>
+            <div class="stat"><strong>6</strong><span>Lifecycle stages</span></div>
+            <div class="stat"><strong>1</strong><span>Unified registry</span></div>
+          </div>
+        </div>
+
+        <div class="checks">
+          <div class="check"><span class="dot"></span><div><strong>Self-declared profiles:</strong> Basic listings created by stakeholders.</div></div>
+          <div class="check"><span class="dot"></span><div><strong>Document submitted:</strong> Supporting documents uploaded for review.</div></div>
+          <div class="check"><span class="dot"></span><div><strong>KMTC reviewed:</strong> Profile content reviewed for completeness and basic authenticity.</div></div>
+          <div class="check"><span class="dot"></span><div><strong>Verified capability:</strong> Deeper verification for selected critical categories when required.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="register">
+      <div class="cta-band">
+        <div>
+          <h2>Ready for a pilot stakeholder onboarding?</h2>
+          <p>
+            This UI can be converted into a working MVP with stakeholder registration, admin approval,
+            profile management, product showcase, search and analytics.
+          </p>
+        </div>
+        <a class="btn teal" href="mailto:info@kmtc.in?subject=KMTC MedTech Exploration Platform">Register Interest</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>KMTC MedTech Exploration Platform</strong><br/>Concept UI prepared for ecosystem discussion.</div>
+      <div>Designed by Kabani Tech Pvt Ltd · Neutral discovery platform</div>
+    </div>
+  </footer>
+
+  <script>
+    function filterProfiles() {
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+      const type = document.getElementById('typeFilter').value;
+      const stage = document.getElementById('stageFilter').value;
+      const cards = document.querySelectorAll('#profileGrid .profile-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const keywords = (card.dataset.keywords || '').toLowerCase();
+        const cardType = card.dataset.type || '';
+        const cardStage = card.dataset.stage || '';
+
+        const matchesSearch = !search || text.includes(search) || keywords.includes(search);
+        const matchesType = !type || cardType === type;
+        const matchesStage = !stage || cardStage.includes(stage);
+
+        const show = matchesSearch && matchesType && matchesStage;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) visibleCount += 1;
+      });
+
+      document.getElementById('emptyState').style.display = visibleCount ? 'none' : 'block';
+    }
+
+    document.getElementById('searchInput').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') filterProfiles();
+    });
+    document.getElementById('typeFilter').addEventListener('change', filterProfiles);
+    document.getElementById('stageFilter').addEventListener('change', filterProfiles);
+  </script>
+</body>
+</html>

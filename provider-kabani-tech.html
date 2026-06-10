@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kabani Tech Pvt Ltd · Provider Profile</title>
+  <style>
+:root {
+  --ink: #061426;
+  --navy: #071d3a;
+  --blue: #1457d9;
+  --blue-2: #0b78d0;
+  --teal: #17b8a6;
+  --mint: #e9fbf7;
+  --sky: #eaf4ff;
+  --surface: #ffffff;
+  --paper: #f5f8fc;
+  --line: #dbe6f0;
+  --muted: #617084;
+  --soft-text: #32445a;
+  --warning: #fff6df;
+  --success: #e7fbf2;
+  --shadow: 0 20px 70px rgba(7, 29, 58, 0.10);
+  --shadow-soft: 0 12px 32px rgba(7, 29, 58, 0.07);
+  --radius: 24px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.topline {
+  background: var(--navy);
+  color: rgba(255,255,255,0.78);
+  font-size: 13px;
+}
+
+.topline-inner {
+  max-width: 1220px;
+  margin: auto;
+  padding: 9px 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+header {
+  background: rgba(255,255,255,0.92);
+  border-bottom: 1px solid rgba(219,230,240,0.85);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(16px);
+}
+
+.nav {
+  max-width: 1220px;
+  margin: auto;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: max-content;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(23,184,166,0.88), rgba(20,87,217,0.94)),
+    radial-gradient(circle at 20% 20%, #fff, transparent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 24px rgba(20,87,217,0.22);
+}
+
+.brand-text strong {
+  display: block;
+  color: var(--navy);
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+.brand-text span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: var(--soft-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-links a:hover { color: var(--blue); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 43px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid transparent;
+  font-weight: 750;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: #0f48ba;
+  box-shadow: 0 10px 26px rgba(20,87,217,0.22);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--navy);
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+.btn.secondary:hover {
+  background: var(--sky);
+  color: var(--blue);
+}
+
+.btn.teal {
+  background: var(--teal);
+  color: #05231f;
+}
+
+.btn.teal:hover { background: #13a898; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 4%, rgba(23,184,166,0.22), transparent 28%),
+    radial-gradient(circle at 12% 12%, rgba(20,87,217,0.16), transparent 24%),
+    linear-gradient(135deg, #ffffff 0%, #f5f9ff 48%, #eef8ff 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(20,87,217,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,87,217,0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 82%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1220px;
+  margin: auto;
+  padding: 82px 22px 64px;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 46px;
+  align-items: center;
+  position: relative;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 6px rgba(23,184,166,0.13);
+}
+
+h1 {
+  font-size: clamp(40px, 5.8vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -2.8px;
+  color: var(--navy);
+  max-width: 830px;
+  margin-bottom: 22px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 720px;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.trust-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.trust-pill {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.75);
+  color: var(--soft-text);
+  font-weight: 700;
+}
+
+.ecosystem-map {
+  min-height: 520px;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(219,230,240,0.95);
+  border-radius: 34px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.map-header h3 {
+  font-size: 17px;
+  color: var(--navy);
+}
+
+.map-header span {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--blue);
+  background: var(--sky);
+  border-radius: 999px;
+  padding: 7px 10px;
+}
+
+.node-system {
+  position: relative;
+  height: 415px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at center, rgba(20,87,217,0.09), transparent 40%),
+    linear-gradient(145deg, #fbfdff, #f1f7ff);
+  border: 1px solid #e8f0f8;
+}
+
+.core-node {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 38px;
+  background: linear-gradient(135deg, var(--navy), #123d70);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 22px 50px rgba(7,29,58,0.28);
+  z-index: 2;
+}
+
+.core-node strong {
+  display: block;
+  font-size: 22px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.core-node small {
+  color: rgba(255,255,255,0.72);
+}
+
+.orbit-node {
+  position: absolute;
+  width: 132px;
+  min-height: 88px;
+  padding: 14px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  color: var(--soft-text);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.orbit-node span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  margin-top: 4px;
+}
+
+.n1 { top: 28px; left: 42%; }
+.n2 { top: 92px; right: 24px; }
+.n3 { bottom: 54px; right: 54px; }
+.n4 { bottom: 28px; left: 34%; }
+.n5 { bottom: 92px; left: 24px; }
+.n6 { top: 92px; left: 42px; }
+
+section {
+  max-width: 1220px;
+  margin: auto;
+  padding: 68px 22px;
+}
+
+.section-title {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.section-title h2 {
+  color: var(--navy);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -1.6px;
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.search-console {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr auto;
+  gap: 12px;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px;
+  color: var(--ink);
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+textarea { min-height: 110px; resize: vertical; }
+
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(20,87,217,0.72);
+  box-shadow: 0 0 0 4px rgba(20,87,217,0.10);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card.lift:hover {
+  transform: translateY(-3px);
+  transition: .18s ease;
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-size: 19px;
+  letter-spacing: -0.3px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 17px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--sky), #fff);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tag {
+  padding: 7px 10px;
+  background: var(--sky);
+  color: #17467d;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tag.teal {
+  background: var(--mint);
+  color: #087568;
+}
+
+.tag.grey {
+  background: #f0f4f8;
+  color: #516173;
+}
+
+.tag.warning {
+  background: var(--warning);
+  color: #8b5a00;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.profile-card .btn {
+  margin-top: 20px;
+  align-self: flex-start;
+}
+
+.empty {
+  display: none;
+  margin-top: 18px;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px dashed var(--line);
+  background: #fff;
+  color: var(--muted);
+  text-align: center;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.module {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 20px;
+  min-height: 180px;
+}
+
+.module-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--sky), var(--mint));
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.module h3 { color: var(--navy); font-size: 17px; margin-bottom: 8px; }
+.module p { color: var(--muted); font-size: 13px; }
+
+.pathway {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.step {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 18px;
+  min-height: 165px;
+  position: relative;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  top: 48px;
+  width: 12px;
+  height: 2px;
+  background: var(--line);
+}
+
+.step:last-child::after { display: none; }
+
+.step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 850;
+  margin-bottom: 14px;
+}
+
+.step h3 { font-size: 16px; color: var(--navy); margin-bottom: 8px; }
+.step p { font-size: 12px; color: var(--muted); }
+
+.split {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.panel.dark {
+  background:
+    radial-gradient(circle at top right, rgba(23,184,166,0.24), transparent 34%),
+    linear-gradient(135deg, var(--navy), #0b315e);
+  color: #fff;
+  border: none;
+}
+
+.panel.dark p { color: rgba(255,255,255,0.76); }
+
+.checks {
+  display: grid;
+  gap: 12px;
+}
+
+.check {
+  display: flex;
+  gap: 11px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--soft-text);
+  font-size: 14px;
+}
+
+.check strong { color: var(--navy); }
+
+.dot {
+  width: 9px;
+  height: 9px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 5px rgba(23,184,166,0.12);
+  flex: 0 0 auto;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.stat {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat span {
+  color: rgba(255,255,255,0.72);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cta-band {
+  background:
+    radial-gradient(circle at 8% 15%, rgba(23,184,166,0.28), transparent 28%),
+    linear-gradient(135deg, var(--navy), #0c4b86);
+  color: #fff;
+  border-radius: 34px;
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cta-band h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.06;
+  margin-bottom: 12px;
+  letter-spacing: -1.4px;
+}
+
+.cta-band p {
+  color: rgba(255,255,255,0.78);
+  max-width: 760px;
+}
+
+.breadcrumb {
+  max-width: 1220px;
+  margin: auto;
+  padding: 28px 22px 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.breadcrumb a { color: var(--blue); }
+
+.profile-hero {
+  max-width: 1220px;
+  margin: 24px auto 0;
+  padding: 0 22px;
+}
+
+.profile-banner {
+  background:
+    radial-gradient(circle at 85% 12%, rgba(23,184,166,0.22), transparent 28%),
+    linear-gradient(135deg, #fff, #eef6ff);
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  padding: 34px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 22px;
+  align-items: center;
+}
+
+.profile-head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.big-logo {
+  width: 86px;
+  height: 86px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 22px;
+  box-shadow: 0 18px 34px rgba(20,87,217,0.22);
+  flex: 0 0 auto;
+}
+
+.profile-head h1 {
+  font-size: clamp(34px, 5vw, 58px);
+  margin: 0 0 8px;
+}
+
+.profile-head p {
+  color: var(--muted);
+  max-width: 780px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 22px;
+}
+
+.side-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.side-card h3, .content-card h3 {
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.fact-list {
+  display: grid;
+  gap: 14px;
+}
+
+.fact {
+  padding-bottom: 13px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.fact:last-child { border-bottom: none; padding-bottom: 0; }
+
+.fact span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 3px;
+}
+
+.fact strong {
+  color: var(--soft-text);
+  font-size: 14px;
+}
+
+.content-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.content-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: var(--shadow-soft);
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.service-item {
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fbfdff;
+}
+
+.service-item strong { color: var(--navy); display: block; margin-bottom: 4px; }
+.service-item span { color: var(--muted); font-size: 13px; }
+
+.timeline {
+  display: grid;
+  gap: 12px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #fbfdff;
+  border: 1px solid var(--line);
+}
+
+.timeline-item strong { color: var(--blue); }
+.timeline-item span { color: var(--muted); font-size: 14px; }
+
+.form-grid {
+  display: grid;
+  gap: 12px;
+}
+
+footer {
+  background: var(--navy);
+  margin-top: 40px;
+  color: rgba(255,255,255,0.74);
+}
+
+.footer-inner {
+  max-width: 1220px;
+  margin: auto;
+  padding: 34px 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.footer-inner strong { color: #fff; }
+
+@media (max-width: 1040px) {
+  .hero-inner, .section-title, .split, .info-grid, .profile-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .search-grid, .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .module-grid, .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pathway {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .profile-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 740px) {
+  .topline { display: none; }
+  .nav-links { display: none; }
+
+  .hero-inner { padding: 54px 18px 44px; }
+  section { padding: 48px 18px; }
+  .breadcrumb, .profile-hero { padding-left: 18px; padding-right: 18px; }
+
+  h1 { letter-spacing: -1.8px; }
+  .lead { font-size: 16px; }
+
+  .search-grid, .card-grid, .module-grid, .pathway, .stats, .service-list, .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .ecosystem-map { min-height: auto; }
+  .node-system {
+    height: auto;
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .core-node, .orbit-node {
+    position: static;
+    transform: none;
+    width: auto;
+    height: auto;
+    min-height: 0;
+  }
+
+  .core-node { border-radius: 24px; }
+
+  .step::after { display: none; }
+
+  .cta-band {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .profile-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="topline">
+    <div class="topline-inner">
+      <span>Sample provider detail page · KMTC MedTech Exploration Platform</span>
+      <span>Profile view · Service capability · Enquiry pathway</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="logo">KMTC</span>
+        <span class="brand-text">
+          <strong>MedTech Exploration Platform</strong>
+          <span>Provider profile</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#explore">Explore</a>
+        <a href="index.html#modules">Platform</a>
+        <a href="index.html#pathway">Pathway</a>
+        <a href="index.html#governance">Governance</a>
+      </div>
+      <a class="btn secondary" href="index.html">Back to Directory</a>
+    </nav>
+  </header>
+
+  <div class="breadcrumb">
+    <a href="index.html">Directory</a> / Service Provider / Kabani Tech Pvt Ltd
+  </div>
+
+  <div class="profile-hero">
+    <div class="profile-banner">
+      <div class="profile-head">
+        <div class="big-logo">KT</div>
+        <div>
+          <div class="tag-row" style="margin-bottom: 12px;">
+            <span class="tag teal">KMTC Reviewed</span>
+            <span class="tag">Service Provider</span>
+            <span class="tag grey">Kerala</span>
+          </div>
+          <h1>Kabani Tech Pvt Ltd</h1>
+          <p>
+            Product design, embedded systems, electronics engineering, prototyping and medical device development support
+            for innovators, clinicians, startups and manufacturing partners.
+          </p>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <a class="btn" href="#enquiry">Send Enquiry</a>
+        <a class="btn secondary" href="index.html#explore">Find Similar Providers</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <div class="info-grid">
+        <aside class="side-card">
+          <h3>Provider Summary</h3>
+          <div class="fact-list">
+            <div class="fact">
+              <span>Stakeholder Type</span>
+              <strong>Service Provider / Product Development Partner</strong>
+            </div>
+            <div class="fact">
+              <span>Location</span>
+              <strong>Kerala, India</strong>
+            </div>
+            <div class="fact">
+              <span>Lifecycle Support</span>
+              <strong>Concept, Prototype, Validation, Regulatory Support</strong>
+            </div>
+            <div class="fact">
+              <span>Primary Capabilities</span>
+              <strong>Electronics, firmware, mechanical coordination, prototyping, documentation</strong>
+            </div>
+            <div class="fact">
+              <span>Verification Level</span>
+              <strong>KMTC Reviewed - sample status</strong>
+            </div>
+            <div class="fact">
+              <span>Engagement Model</span>
+              <strong>Project-based / Development partner / Technical consulting</strong>
+            </div>
+          </div>
+        </aside>
+
+        <div class="content-stack">
+          <article class="content-card">
+            <h3>About the Provider</h3>
+            <p>
+              Kabani Tech Pvt Ltd supports early-stage and development-stage medical device projects by bridging
+              the gap between clinical ideas and engineering implementation. The team can support requirement
+              understanding, product architecture, embedded electronics, prototype development, testing preparation
+              and coordination with regulatory or ISO 13485 pathways.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <h3>Core Service Capabilities</h3>
+            <div class="service-list">
+              <div class="service-item">
+                <strong>Medical Device Concept Engineering</strong>
+                <span>Translation of clinical problem statements into technical requirements and development plans.</span>
+              </div>
+              <div class="service-item">
+                <strong>Electronics & Embedded Systems</strong>
+                <span>PCB architecture, sensor integration, firmware, communication modules and device control logic.</span>
+              </div>
+              <div class="service-item">
+                <strong>Prototype Development</strong>
+                <span>Functional prototype development, iterative testing, enclosure coordination and hardware validation.</span>
+              </div>
+              <div class="service-item">
+                <strong>Documentation Support</strong>
+                <span>Engineering notes, test plans, risk inputs and development evidence for regulatory pathway preparation.</span>
+              </div>
+              <div class="service-item">
+                <strong>UI/UX and Digital Interface</strong>
+                <span>Mobile apps, dashboards, device interfaces and visualization systems for medical technology products.</span>
+              </div>
+              <div class="service-item">
+                <strong>Manufacturing Transition Support</strong>
+                <span>Prototype-to-production support, vendor coordination and technical handover preparation.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="content-card">
+            <h3>Supported Development Stages</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Clinical Need</strong>
+                <span>Requirement capture, user workflow mapping and technical feasibility discussion.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Concept</strong>
+                <span>System block diagram, architecture planning, component strategy and proof-of-concept planning.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Prototype</strong>
+                <span>Electronics, firmware, enclosure coordination, pilot build and functional verification.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Validation</strong>
+                <span>Test setup support, data collection, design iteration and validation-readiness documentation.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Regulatory Pathway</strong>
+                <span>Technical inputs for ISO 13485 consultants, CDSCO consultants and manufacturing partners.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="content-card">
+            <h3>Sample Tags</h3>
+            <div class="tag-row">
+              <span class="tag">Product Design</span>
+              <span class="tag">Electronics</span>
+              <span class="tag">Firmware</span>
+              <span class="tag">Prototype</span>
+              <span class="tag">Medical Device Development</span>
+              <span class="tag">IoT</span>
+              <span class="tag">Dashboard</span>
+              <span class="tag">Testing Support</span>
+              <span class="tag">Documentation</span>
+              <span class="tag teal">KMTC Reviewed</span>
+            </div>
+          </article>
+
+          <article class="content-card" id="enquiry">
+            <h3>Send an Enquiry</h3>
+            <p style="margin-bottom: 16px; color: var(--muted);">
+              This form is a front-end mockup. In the working platform, the enquiry can be routed to the listed provider
+              while KMTC remains a neutral discovery platform.
+            </p>
+            <form class="form-grid" onsubmit="event.preventDefault(); alert('Sample enquiry submitted. This is a UI mockup.');">
+              <input type="text" placeholder="Your name / organization" required />
+              <input type="email" placeholder="Email address" required />
+              <select required>
+                <option value="">Select enquiry type</option>
+                <option>Medical device idea / concept</option>
+                <option>Prototype development</option>
+                <option>Electronics / embedded design</option>
+                <option>Regulatory pathway support</option>
+                <option>Manufacturing transition</option>
+              </select>
+              <textarea placeholder="Briefly describe your requirement"></textarea>
+              <button class="btn" type="submit">Submit Enquiry</button>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta-band">
+        <div>
+          <h2>Need a different partner?</h2>
+          <p>Return to the ecosystem directory to discover manufacturers, testing labs, regulatory consultants, clinical partners and distributors.</p>
+        </div>
+        <a class="btn teal" href="index.html#explore">Explore Directory</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>Sample Provider Profile</strong><br/>This page demonstrates how a service provider can be shown inside the platform.</div>
+      <div>KMTC discovery platform concept · Designed by Kabani Tech Pvt Ltd</div>
+    </div>
+  </footer>
+</body>
+</html>
